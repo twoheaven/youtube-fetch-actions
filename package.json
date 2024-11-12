@@ -1,0 +1,12 @@
+{
+    "name": "youtube-fetch-actions",
+    "version": "1.0.0",
+    "description": "Fetch YouTube videos using API",
+    "scripts": {
+      "start": "node fetchVideos.js"
+    },
+    "dependencies": {
+      "node-fetch": "^2.6.1"
+    }
+  }
+  
