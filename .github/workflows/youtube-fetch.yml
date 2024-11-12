@@ -41,3 +41,5 @@ jobs:
           git add .  # 모든 변경사항 추가
           git commit -m "Update YouTube video links"  # 커밋 메시지 작성
           git push  # 변경사항을 원격 리포지토리에 푸시
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 인증 토큰 사용

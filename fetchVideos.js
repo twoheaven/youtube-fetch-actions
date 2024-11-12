@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 const API_KEY = process.env.YOUTUBE_API_KEY;  // GitHub Secrets에서 가져오기
-const CHANNEL_ID = 'YOUR_CHANNEL_ID';  // 특정 유튜브 채널 ID
+const CHANNEL_ID = 'UCfItTXw28rd2Z2DSw0UqAXg';  // 특정 유튜브 채널 ID
 const URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=5&order=date&type=video&key=${API_KEY}`;
 
 async function fetchYouTubeVideos() {
