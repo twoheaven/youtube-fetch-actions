@@ -1,0 +1,43 @@
+# 워크플로 이름 설정
+name: Fetch YouTube Videos
+
+# 워크플로 실행 트리거 설정
+on:
+  schedule:
+    # 매일 자정(UTC 기준)에 워크플로 실행
+    - cron: "0 0 * * *"
+
+# 워크플로에 포함된 작업(jobs) 정의
+jobs:
+  fetch-videos:
+    # 작업이 실행될 환경 설정 (예: 최신 Ubuntu 서버)
+    runs-on: ubuntu-latest
+
+    # 작업 단계 정의
+    steps:
+      # 리포지토리 코드 확인 단계 (현재 리포지토리의 코드를 가져옴)
+      - name: Checkout repository
+        uses: actions/checkout@v3 # GitHub에서 제공하는 체크아웃 액션 사용
+
+      # Node.js 설치 단계
+      - name: Set up Node.js
+        uses: actions/setup-node@v3 # Node.js 환경을 설정하기 위한 액션 사용
+        with:
+          node-version: "16" # Node.js 버전 지정
+
+      # 프로젝트에 필요한 종속성 설치 (package.json에 정의된 패키지 설치)
+      - name: Install dependencies
+        run: npm install # npm 명령어를 사용해 패키지 설치
+
+      # YouTube API에서 데이터를 가져오는 사용자 작성 스크립트 실행
+      - name: Fetch YouTube Videos
+        run: node fetchVideos.js # `fetchVideos.js` 파일을 실행하여 API 요청 수행
+
+      # 변경사항 커밋 및 푸시 단계
+      - name: Commit and Push changes
+        run: |
+          git config --local user.name "GitHub Actions"  # git 사용자 이름 설정
+          git config --local user.email "actions@github.com"  # git 사용자 이메일 설정
+          git add .  # 모든 변경사항 추가
+          git commit -m "Update YouTube video links"  # 커밋 메시지 작성
+          git push  # 변경사항을 원격 리포지토리에 푸시
