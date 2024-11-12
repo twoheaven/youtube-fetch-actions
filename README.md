@@ -10,7 +10,7 @@
 - **백엔드와 프론트엔드 연동**: 백엔드 페이지에서 수집된 데이터를 프론트엔드 페이지에서 사용할 수 있도록 제공합니다.
 
 ## 프로젝트 구조
-
+    ```
 youtube-fetch-actions/
 |-- .github/
 |   |-- workflows/
@@ -18,6 +18,7 @@ youtube-fetch-actions/
 |-- fetchVideos.js               # YouTube API 요청 및 데이터 저장 스크립트
 |-- package.json                 # 프로젝트 종속성 관리 파일
 |-- README.md                    # 프로젝트 설명 파일
+    ```
 
 ## 사용된 기술
 - **GitHub Actions**: CI/CD 자동화를 위한 플랫폼.
