@@ -42,5 +42,5 @@ jobs:
           git add .  # 모든 변경사항 추가
           git commit -m "Update YouTube video links"  # 커밋 메시지 작성
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main  # 푸시할 때 GITHUB_TOKEN을 사용하여 인증
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 인증 토큰 사용
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 인증 토큰 사용
