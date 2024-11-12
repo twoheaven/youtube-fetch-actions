@@ -5,7 +5,7 @@ name: Fetch YouTube Videos
 on:
   schedule:
     # 매일 자정(한국 표준시 기준)에 워크플로 실행
-    - cron: "0 15 * * *"
+    - cron: "0 16 * * *"
 
 # 워크플로에 포함된 작업(jobs) 정의
 jobs:
