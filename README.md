@@ -10,7 +10,7 @@
 - **백엔드와 프론트엔드 연동**: 백엔드 페이지에서 수집된 데이터를 프론트엔드 페이지에서 사용할 수 있도록 제공합니다.
 
 ## 프로젝트 구조
-    ```
+    ```bash
 youtube-fetch-actions/
 |-- .github/
 |   |-- workflows/
@@ -66,4 +66,3 @@ youtube-fetch-actions/
 
 ## 문의
 문의사항이 있으면 [이슈](https://github.com/yourusername/youtube-fetch-actions/issues)를 통해 제기해 주세요.
-```
