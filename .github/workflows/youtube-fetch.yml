@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3 # Node.js 환경을 설정하기 위한 액션 사용
         with:
-          node-version: "20" # Node.js 버전 지정
+          node-version: "16" # Node.js 버전 지정
 
       # 프로젝트에 필요한 종속성 설치 (package.json에 정의된 패키지 설치)
       - name: Install dependencies
