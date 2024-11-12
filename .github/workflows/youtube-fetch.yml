@@ -4,8 +4,8 @@ name: Fetch YouTube Videos
 # 워크플로 실행 트리거 설정
 on:
   schedule:
-    # 매일 자정(UTC 기준)에 워크플로 실행
-    - cron: "0 0 * * *"
+    # 매일 자정(한국 표준시 기준)에 워크플로 실행
+    - cron: "0 15 * * *"
 
 # 워크플로에 포함된 작업(jobs) 정의
 jobs:
