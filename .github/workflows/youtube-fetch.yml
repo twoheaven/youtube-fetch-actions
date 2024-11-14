@@ -31,7 +31,12 @@ jobs:
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }} # GitHub Secrets에서 API 키 사용
 
-      # 변경사항 커밋 및 푸시
+      - name: Fetch Playlist Videos
+        run: node fetchPlaylist.js
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }} # GitHub Secrets에서 API 키 사용
+
+          # 변경사항 커밋 및 푸시
       - name: Commit and Push changes
         run: |
           git config --local user.name "GitHub Actions"
