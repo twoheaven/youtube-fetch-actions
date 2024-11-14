@@ -22,22 +22,26 @@ async function fetchPlaylistVideos() {
     const data = await response.json();
 
     // 응답 데이터 확인
-    if (!data.items) {
-      console.error('No items found in the response.');
-      return;
-    }
-
-    if (data.items.length === 0) {
+    if (!data.items || data.items.length === 0) {
       console.log('No videos found.');
       return;
     }
 
-    // 비디오 링크 추출
-    const videoLinks = data.items.map(item => `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`);
+    // 비디오 정보 추출 (날짜, 제목, 링크)
+    const videoDetails = data.items.map(item => {
+      const date = new Date(item.snippet.publishedAt);
+      const dateOnly = date.toISOString().split('T')[0];  // 날짜만 추출
+
+      return {
+        date: dateOnly,  // 날짜만 저장
+        title: item.snippet.title,  // 영상 제목
+        link: `https://www.youtube.com/watch?v=${item.snippet.resourceId.videoId}`,  // 영상 링크
+      };
+    });
 
     // videoLinks를 파일에 저장 (예: videos.json)
-    fs.writeFileSync('playlist.json', JSON.stringify(videoLinks, null, 2));
-    console.log('YouTube video links have been saved.');
+    fs.writeFileSync('playlist.json', JSON.stringify(videoDetails, null, 2));
+    console.log('YouTube video details have been saved.');
   } catch (error) {
     console.error('Error fetching YouTube videos:', error);
   }
