@@ -27,9 +27,9 @@ async function fetchPlaylistVideos() {
       return;
     }
 
-    // 'Private video'인 항목 제외하고 비디오 정보 추출
+    // 'Private video'와 'Deleted video' 제외하고 비디오 정보 추출
     const videoDetails = data.items
-      .filter(item => item.snippet.title !== 'Private video')  // 'Private video' 제외
+      .filter(item => item.snippet.title !== 'Private video' && item.snippet.title !== 'Deleted video')  // 'Private video'와 'Deleted video' 제외
       .map(item => {
         const date = new Date(item.snippet.publishedAt);
         const dateOnly = date.toISOString().split('T')[0];  // 날짜만 추출
@@ -53,7 +53,7 @@ async function fetchPlaylistVideos() {
       link: item.link  // 영상 링크
     }));
 
-    // videoLinks를 파일에 저장 (예: videos.json)
+    // videoDetails를 파일에 저장 (예: playlist.json)
     fs.writeFileSync('playlist.json', JSON.stringify(finalVideoDetails, null, 2));
     console.log('YouTube video details have been saved.');
   } catch (error) {
